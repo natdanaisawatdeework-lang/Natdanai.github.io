@@ -80,6 +80,21 @@
       border-radius: 8px;
       padding: 1rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .icon-grid img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.5rem;
     }
     footer {
       background-color: #000;
@@ -106,67 +121,50 @@
 </head>
 <body>
   <nav>
-    <a href="#skills">Skills</a>
+    <a href="#intro">About</a>
     <a href="#projects">Projects</a>
-    <a href="#certs">Certificates</a>
-    <a href="#work">Experience</a>
+    <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <header>
+  <header id="intro">
     <img src="https://via.placeholder.com/120" alt="Profile Picture" />
     <h1>Natdanai Sawatdee</h1>
     <p>New Graduate in IT | สนใจงาน IT Support, Web Development และ Cybersecurity</p>
   </header>
 
   <main>
-    <section id="skills">
-      <h2>Skills / ทักษะ</h2>
-      <ul>
-        <li>Hardware & Software Troubleshooting, Windows, macOS, Linux</li>
-        <li>Networking (TCP/IP, DNS, DHCP), Google Workspace, Office 365</li>
-        <li>React, HTML, CSS, JavaScript, Python, Java</li>
-        <li>MySQL, Git, Docker, Arduino</li>
-      </ul>
-    </section>
-
     <section id="projects">
       <h2>Projects / โปรเจกต์</h2>
       <div class="card-grid">
         <div class="card">
-          <h3>Chatbot Q&A</h3>
+          <h3><a href="projects/chatbot.html">Chatbot Q&A</a></h3>
           <p>แชทบอทตอบคำถามเกี่ยวกับสาขา IT พัฒนาโดยใช้ React + Gemini API</p>
         </div>
         <div class="card">
-          <h3>Arduino Alert System</h3>
+          <h3><a href="projects/arduino-alert.html">Arduino Alert System</a></h3>
           <p>ระบบเตือนภัยด้วยเซ็นเซอร์บน Arduino แสดงผลผ่าน Serial Monitor</p>
         </div>
         <div class="card">
-          <h3>Mini Portfolio Website</h3>
+          <h3><a href="projects/portfolio.html">Mini Portfolio Website</a></h3>
           <p>เว็บไซต์ส่วนตัวสร้างด้วย HTML/CSS แสดงทักษะและผลงาน</p>
         </div>
       </div>
     </section>
 
-    <section id="certs">
-      <h2>Certificates / ใบรับรอง</h2>
-      <div class="card-grid">
-        <div class="card">Google Cybersecurity</div>
-        <div class="card">IT Support Basics</div>
-        <div class="card">Network Fundamentals</div>
-        <div class="card">Docker for Beginners</div>
-        <div class="card">Linux Command Line</div>
-        <div class="card">Web Development</div>
-        <div class="card">Cyber Hygiene</div>
-        <div class="card">Arduino Projects</div>
-        <div class="card">Git & GitHub</div>
+    <section id="skills">
+      <h2>Skills / ทักษะ</h2>
+      <div class="icon-grid">
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><div>HTML</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><div>CSS</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"/><div>JavaScript</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/><div>React</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/><div>Python</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/><div>Java</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><div>MySQL</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/><div>Git</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/><div>Docker</div></div>
       </div>
-    </section>
-
-    <section id="work">
-      <h2>Work Experience / ประสบการณ์</h2>
-      <p><strong>Shopee Express</strong> – Picker/Packer</p>
-      <p><strong>Walgreens Warehouse</strong> – Picker/Packer</p>
     </section>
 
     <section id="contact">
