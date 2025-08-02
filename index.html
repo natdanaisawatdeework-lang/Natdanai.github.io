@@ -1,31 +1,124 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio - Natdanai</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natdanai | IT Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header img {
+      width: 150px;
+      border-radius: 50%;
+    }
+    section {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .projects, .certificates {
+      display: grid;
+      gap: 1rem;
+    }
+    .card {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    footer {
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      header img { width: 100px; }
+    }
+  </style>
 </head>
 <body>
   <header>
+    <img src="https://via.placeholder.com/150" alt="Profile Picture" />
     <h1>Natdanai Sawatdee</h1>
-    <p>Junior IT Support | React Developer</p>
+    <p>New Graduate in IT | สนใจงาน IT Support, Web Development และ Cybersecurity</p>
   </header>
 
   <section>
-    <h2>เกี่ยวกับฉัน</h2>
-    <p>เรียนจบด้านเทคโนโลยีสารสนเทศ มีโปรเจกต์ Chatbot และความรู้ด้าน Troubleshooting</p>
-  </section>
-
-  <section>
-    <h2>ผลงาน</h2>
+    <h2>🛠️ Skills / ทักษะ</h2>
     <ul>
-      <li>Chatbot ให้ข้อมูลหลักสูตร IT (React + Gemini API)</li>
-      <li>Arduino ระบบเปิด-ปิดไฟอัตโนมัติ</li>
+      <li>Hardware & Software Troubleshooting, Windows, macOS, Linux</li>
+      <li>Networking (TCP/IP, DNS, DHCP), Google Workspace, Office 365</li>
+      <li>React, HTML, CSS, JavaScript, Python, Java</li>
+      <li>MySQL, Git, Docker, Arduino</li>
     </ul>
   </section>
 
+  <section>
+    <h2>📂 Projects / โปรเจกต์</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>📱 Chatbot Q&A</h3>
+        <p>แชทบอทตอบคำถามเกี่ยวกับสาขา IT พัฒนาโดยใช้ React + Gemini API</p>
+      </div>
+      <div class="card">
+        <h3>🔔 Arduino Alert System</h3>
+        <p>ระบบเตือนภัยด้วยเซ็นเซอร์บน Arduino แสดงผลผ่าน Serial Monitor</p>
+      </div>
+      <div class="card">
+        <h3>📝 Mini Portfolio Website</h3>
+        <p>เว็บไซต์ส่วนตัวสร้างด้วย HTML/CSS แสดงทักษะและผลงาน</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📜 Certificates / ใบรับรอง</h2>
+    <div class="certificates">
+      <div class="card">Google Cybersecurity</div>
+      <div class="card">IT Support Basics</div>
+      <div class="card">Network Fundamentals</div>
+      <div class="card">Docker for Beginners</div>
+      <div class="card">Linux Command Line</div>
+      <div class="card">Web Development</div>
+      <div class="card">Cyber Hygiene</div>
+      <div class="card">Arduino Projects</div>
+      <div class="card">Git & GitHub</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>💼 Work Experience / ประสบการณ์ทำงาน</h2>
+    <p><strong>Shopee Express</strong> – Picker/Packer</p>
+    <p><strong>Walgreens Warehouse</strong> – Picker/Packer</p>
+  </section>
+
+  <section>
+    <h2>📞 Contact / ติดต่อ</h2>
+    <p>Email: natdanai@example.com</p>
+    <p>Phone: 08x-xxx-xxxx</p>
+    <p>GitHub: <a href="https://github.com/natdanai" target="_blank">github.com/natdanai</a></p>
+  </section>
+
   <footer>
-    <p>ติดต่อ: email@example.com | GitHub: github.com/yourusername</p>
+    &copy; 2025 Natdanai Sawatdee | Portfolio Website
   </footer>
 </body>
 </html>
