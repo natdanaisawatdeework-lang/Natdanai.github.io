@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ณัฐดนัย | พอร์ตโฟลิโอ IT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #f9f9f9;
+      --color-primary: #2c3e50;
+      --color-primary-light: #3498db;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-accent: #e67e22;
+      --color-white: #ffffff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    nav {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      align-items: center;
+    }
+    nav a {
+      color: var(--color-white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+      text-decoration: none;
+      outline: none;
+    }
+    /* ปุ่มเปลี่ยนภาษา sticky อยู่ขวาสุด */
+    #lang-switcher {
+      margin-left: auto;
+      position: sticky;
+      top: 10px;
+      background: var(--color-primary-light);
+      border: none;
+      color: var(--color-white);
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      z-index: 1100;
+    }
+    #lang-switcher:hover {
+      background: var(--color-accent);
+    }
+
+    /* แก้ไขส่วน header */
+    header {
+      background-color: #ecf6fc; /* ฟ้าอ่อนตัดกับ nav bar */
+      color: var(--color-primary); /* สีตัวหนังสือเป็นสีเข้ม */
+      padding: 4rem 1rem 3rem;
+      text-align: center;
+      border-radius: 0 0 12px 12px; /* มุมโค้งด้านล่าง */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* เงาเล็กน้อย */
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0 0.5rem;
+      font-weight: 800;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+      font-weight: 400;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--color-primary); /* กรอบรูปสีเข้ม */
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.05);
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 80px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      border: 2px solid #ccc;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      display: inline-block;
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--color-white);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1.2rem;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      background-color: #f0f8ff;
+    }
+    .card h3, .card p {
+      margin: 0.5rem 0;
+      pointer-events: none;
+      font-weight: 500;
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .icon-grid img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 500;
+    }
+    a {
+      color: var(--color-primary-light);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Modal รูปขยาย */
+    #modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    #modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    #modal.show {
+      display: flex;
+    }
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      header h1 { font-size: 2rem; }
+      nav {
+        flex-wrap: wrap;
+      }
+      #lang-switcher {
+        position: sticky;
+        top: 10px;
+        margin-left: auto;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#intro" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a>
+    <a href="#projects" data-en="Projects" data-th="โปรเจกต์">โปรเจกต์</a>
+    <a href="#skills" data-en="Skills" data-th="ทักษะ">ทักษะ</a>
+    <a href="#certificates" data-en="Certificates" data-th="ใบรับรอง">ใบรับรอง</a>
+    <a href="#contact" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a>
+    <button id="lang-switcher" aria-label="Switch Language">EN</button>
+  </nav>
+
+<header id="intro" style="text-align: center;">
+  <img id="profile-pic" src="images/profile.jpg" alt="Natdanai Sawatdee" />
+  <h1 data-en="Natdanai Sawatdee" data-th="ณัฐดนัย สวัสดี" style="margin-bottom: 0.5rem;">ณัฐดนัย สวัสดี</h1>
+  <p 
+    data-en="Hi, I’m Natdanai Sawatdee. I’m passionate about IT Support and Help Desk roles,  
+with a strong commitment to troubleshooting technical issues, supporting users,  
+and ensuring smooth IT operations with care and integrity."
+    data-th="สวัสดีครับ ผมชื่อณัฐดนัย สวัสดี สนใจในสายงาน IT Support / Help Desk 
+มีความตั้งใจในการแก้ไขปัญหาทางเทคนิค ดูแลผู้ใช้งาน 
+และทำให้ระบบไอทีในองค์กรทำงานได้อย่างราบรื่นด้วยความใส่ใจและจริงใจในการทำงาน"
+    style="white-space: pre-line; margin-top: 0;"
+  >
+    สวัสดีครับ ผมชื่อณัฐดนัย สวัสดี สนใจในสายงาน IT Support / Help Desk 
+    มีความตั้งใจในการแก้ไขปัญหาทางเทคนิค ดูแลผู้ใช้งาน 
+    และทำให้ระบบไอทีในองค์กรทำงานได้อย่างราบรื่นด้วยความใส่ใจและจริงใจในการทำงาน
+  </p>
+</header>
+
+
+  <main>
+    <section id="projects">
+      <h2 data-en="Projects" data-th="โปรเจกต์">โปรเจกต์</h2>
+      <div class="card-grid">
+        <div class="card" onclick="window.location.href='projects/chatbot.html'">
+     <h3 data-en="BUU Chatbot-IT" data-th="BUU Chatbot-IT" style="font-weight: bold;">BUU Chatbot-IT</h3>
+          <p data-en="Chatbot answering IT questions developed using React and Gemini API"
+             data-th="แชทบอทตอบคำถามเกี่ยวกับสาขา IT พัฒนาโดยใช้ React + Gemini API">
+            แชทบอทตอบคำถามเกี่ยวกับสาขา IT พัฒนาโดยใช้ React + Gemini API
+          </p>
+        </div>
+        <div class="card" onclick="window.location.href='projects/arduino-alert.html'">
+<h3 data-en="IoT Navigation Aid for the Visually Impaired" data-th="IoT Navigation Aid for the Visually Impaired" style="font-weight: bold;">
+  IoT Navigation Aid for the Visually Impaired
+</h3>          <p data-en="Alert system with sensors on Arduino displaying results on Serial Monitor"
+             data-th="ระบบเตือนภัยด้วยเซ็นเซอร์บน Arduino แสดงผลผ่าน Serial Monitor">
+            ระบบเตือนภัยด้วยเซ็นเซอร์บน Arduino แสดงผลผ่าน Serial Monitor
+          </p>
+        </div>
+        <div class="card" onclick="window.location.href='projects/portfolio.html'">
+  <h3 data-en="Multimedia Production" data-th="Multimedia Production" style="font-weight: bold;">Multimedia Production</h3>          
+  <p data-en="This short film tells the story of the main character who steals a teammate’s work and claims it as their own in order to complete the project successfully."
+             data-th="หนังสั้นเรื่องนี้เล่าเรื่องราวของตัวละครหลักที่ขโมยงานเพื่อนในกลุ่มมาเป็นของตัวเอง เพื่อให้งานสำเร็จ">
+            หนังสั้นเรื่องนี้เล่าเรื่องราวของตัวละครหลักที่ขโมยงานเพื่อนในกลุ่มมาเป็นของตัวเอง เพื่อให้งานสำเร็จ
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 data-en="Skills" data-th="ทักษะ">ทักษะ</h2>
+        <div class="icon-grid">
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"/><div>VS Code</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" alt="Windows"/><div>Windows</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux"/><div>Linux</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><div>HTML</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><div>CSS</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"/><div>JavaScript</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/><div>React</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/><div>Python</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/><div>Java</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><div>MySQL</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/><div>Git</div></div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/><div>Docker</div></div>
+        <div><div style="font-size: 2rem;">🔌</div><div>Networking</div></div>
+        <div><div style="font-size: 2rem;">📄</div><div>Microsoft Office</div></div>
+        <div><div style="font-size: 2rem;">🌐</div><div>Google Workspace</div></div>
+        <div><div style="font-size: 2rem;">🖥️</div><div>Remote Tools</div></div>
+        <div><div style="font-size: 2rem;">🧑‍💼</div><div>Active Directory</div></div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <h2 data-en="Certificates" data-th="ใบรับรอง">ใบรับรอง</h2>
+      <div class="card" onclick="window.location.href='certificates/certificates.html'">
+        <h3 data-en="View Certificates" data-th="ดูใบรับรอง">ดูใบรับรอง</h3>
+        <p data-en="Relevant Certifications and Additional Skill" data-th="รวมใบรับรองที่เกี่ยวข้อง และความสามารถเพิ่มเติม">
+          รวมใบรับรองที่เกี่ยวข้อง และความสามารถเพิ่มเติม
+        </p>
+      </div>
+    </section>
+
+<section id="contact">
+  <h2 data-en="Contact" data-th="ติดต่อ">ติดต่อ</h2>
+
+  <style>
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background-color: transparent;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .contact-link img {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-link:hover {
+      background-color: #f0f8ff;
+      text-decoration: none;
+    }
+
+    .contact-link:hover img {
+      transform: scale(1.1);
+    }
+  </style>
+
+  <a class="contact-link" href="mailto:natdanai.sawatdee.work@gmail.com" target="_blank" style="color: #797b06;">
+    <img src="images/email.png" alt="Email Icon" />
+    natdanai.sawatdee.work@gmail.com
+  </a>
+
+  <a class="contact-link" href="tel:092-857-0835" target="_blank" style="color: #2c3e50;">
+    <img src="images/phone.png" alt="Phone Icon" />
+    092-857-0835
+  </a>
+
+  <a class="contact-link" href="https://www.facebook.com/natdanai.sawatdee.530683" target="_blank" style="color: #1877f2;">
+    <img src="images/facebook.png" alt="Facebook Icon" />
+    Facebook
+  </a>
+
+  <a class="contact-link" href="https://line.me/ti/p/kRN5glkpk6" target="_blank" style="color: #06c755;">
+    <img src="images/line.png" alt="LINE Icon" />
+    LINE
+  </a>
+
+  <a class="contact-link" href="https://github.com/natdanaisawatdeework-lang" target="_blank" style="color: #000000;">
+    <img src="images/github.png" alt="GitHub Icon" />
+    GitHub
+  </a>
+</section>
+
+
+  </main>
+
+  <footer data-en="© 2025 Natdanai Sawatdee | Portfolio Website"
+          data-th="© 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ">
+    © 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ
+  </footer>
+
+  <!-- Modal สำหรับขยายรูป -->
+  <div id="modal" role="dialog" aria-modal="true" tabindex="-1" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+    <img src="images/profile.jpg" alt="รูปขยายใหญ่ ณัฐดนัย สวัสดี" style="max-width:90vw; max-height:90vh; border-radius:10px; box-shadow:0 0 20px rgba(255,255,255,0.3);" />
+  </div>
+
+  <script>
+    // Modal รูปโปรไฟล์
+    const profilePic = document.getElementById('profile-pic');
+    const modal = document.getElementById('modal');
+
+    profilePic.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modal.focus();
+    });
+    modal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // ฟังก์ชันสลับภาษา ไทย <-> อังกฤษ พร้อม localStorage
+    const langSwitcher = document.getElementById('lang-switcher');
+    let currentLang = localStorage.getItem('portfolioLang') || 'th';
+
+    function switchLanguage(lang) {
+      const elementsToSwitch = document.querySelectorAll('[data-en][data-th]');
+      elementsToSwitch.forEach(el => {
+        el.textContent = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-th');
+      });
+      langSwitcher.textContent = (lang === 'en') ? 'TH' : 'EN';
+      currentLang = lang;
+      localStorage.setItem('portfolioLang', lang);
+    }
+
+    // โหลดภาษาที่เลือกไว้ตอนเปิดหน้า
+    switchLanguage(currentLang);
+
+    langSwitcher.addEventListener('click', () => {
+      if (currentLang === 'th') {
+        switchLanguage('en');
+      } else {
+        switchLanguage('th');
+      }
+    });
+
+    // ปรับการเลื่อนหน้าเวลา click ลิงก์ใน nav เพื่อไม่ให้ navbar บังเนื้อหา
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // ป้องกันเด้งปกติ
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElem = document.getElementById(targetId);
+        if (targetElem) {
+          const offset = 80; // ปรับตามความสูง navbar ของคุณ
+          const elementPosition = targetElem.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

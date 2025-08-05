@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-en="Multimedia Project | Natdanai" data-th="โปรเจกต์มัลติมีเดีย | ณัฐดนัย">โปรเจกต์มัลติมีเดีย | ณัฐดนัย</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #f9f9f9;
+      --color-primary: #2c3e50;
+      --color-primary-light: #3498db;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-accent: #e67e22;
+      --color-white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--color-white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+      text-decoration: none;
+      outline: none;
+    }
+
+    #lang-switcher {
+      margin-left: auto;
+      background: var(--color-primary-light);
+      border: none;
+      color: var(--color-white);
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      z-index: 1100;
+    }
+
+    #lang-switcher:hover {
+      background: var(--color-accent);
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .project-section {
+      background: var(--color-white);
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .btn-back {
+      display: block;
+      width: fit-content;
+      margin: 3rem auto 1rem;
+      background-color: var(--color-primary-light);
+      color: var(--color-white);
+      padding: 0.6rem 1.4rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-back:hover {
+      background-color: var(--color-accent);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 500;
+      margin-top: 3rem;
+    }
+
+    a {
+      color: var(--color-primary-light);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      nav {
+        flex-wrap: wrap;
+      }
+      #lang-switcher {
+        position: sticky;
+        top: 10px;
+        margin-left: auto;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html#intro" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a>
+    <a href="../index.html#projects" data-en="Projects" data-th="โปรเจกต์">โปรเจกต์</a>
+    <a href="../index.html#skills" data-en="Skills" data-th="ทักษะ">ทักษะ</a>
+    <a href="../index.html#certificates" data-en="Certificates" data-th="ใบรับรอง">ใบรับรอง</a>
+    <a href="../index.html#contact" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a>
+    <button id="lang-switcher" aria-label="Switch Language">EN</button>
+  </nav>
+
+  <main>
+    <section id="project-multimedia" class="project-section">
+      <h2 data-en="🎬 Multimedia Production (2022)" data-th="🎬 ผลงานวิชา Multimedia Production (2022)">
+        🎬 ผลงานวิชา Multimedia Production (2022)
+      </h2>
+
+      <h3 data-en="🎭 Story Summary" data-th="🎭 เรื่องย่อ">🎭 เรื่องย่อ</h3>
+      <p data-en="This is a story about Gun, a university student currently in his second year. The story flashes back to a day during his first year — a day he will never forget for the rest of his life.
+
+As the first year was coming to an end, the professor assigned the students a final project: to develop a software application. Gun, however, procrastinated due to his laziness and hadn't started the project. Time passed, and by 8:00 PM that day, he finally began working on it. Suddenly, the internet in his dorm went down, so he rushed over to his friend Tor’s dorm to continue working.
+
+Gun resumed his work, but unfortunately, his code kept showing errors. There was no time left to start over. In desperation, Gun decided to submit Tor's project as his own. As a result, Tor received an F for the project. The failure deeply affected Tor, leading him to severe stress — and eventually, he ended his own life."
+         data-th="เป็นเรื่องราวของกันนิสิตที่กำลังศึกษาอยู่ชั้นปีที่ 2 โดยเรื่องราวจะเล่าย้อนกลับไปตอนที่กันยังศึกษาอยู่ชั้นปีที่ 1 ในวันที่เขาจะไม่ลืมไปชั่วชีวิต เรื่องราวมีอยู่ว่า ในวันที่พวกเขากำลังจะกำลังจะจบชั้นปี 1 อาจารย์ให้ทำงานเขียนซอฟต์แวร์เพื่อเป็นprojectจบ แต่กันนั้นติดขี้เกียจเลยยังไม่ได้ทำจนเวลาผ่านไปจนถึง 20.00 น. เขาจึงรีบทำงานแต่อยู่ดีๆเน็ตที่หอเขาก็ล่ม จึงทำให้กันต้องรีบไปหอเพื่อนของเขา หลังจากนั้นเขาก็เริ่มทำงานอีกครั้งแต่ code ของเขานั้นกลับ Error และเขาไม่มีเวลาที่จะเริ่มใหม่แล้ว กันเลยเอางานของต่อไปส่ง และต่อก็ติด F ทำให้ต่อนั้นเครียดและทำให้ต่อได้จบชีวิตลง">
+        เป็นเรื่องราวของกันนิสิตที่กำลังศึกษาอยู่ชั้นปีที่ 2 โดยเรื่องราวจะเล่าย้อนกลับไปตอนที่กันยังศึกษาอยู่ชั้นปีที่ 1 ในวันที่เขาจะไม่ลืมไปชั่วชีวิต เรื่องราวมีอยู่ว่า ในวันที่พวกเขากำลังจะกำลังจะจบชั้นปี 1 อาจารย์ให้ทำงานเขียนซอฟต์แวร์เป็นproject แต่กันนั้นติดขี้เกียจเลยยังไม่ได้ทำจนเวลาผ่านไปจนถึง 20.00 น. เขาจึงรีบทำงานแต่อยู่ดีๆคอมดับ จึงทำให้กันต้องรีบไปหอเพื่อนของเขา หลังจากนั้นเขาก็เริ่มทำงานอีกครั้งแต่ code ของเขานั้นกลับ Error และเขาไม่มีเวลาที่จะเริ่มใหม่แล้ว กันเลยเอางานของต่อไปส่ง และต่อก็ติด F ทำให้ต่อนั้นเครียดและทำให้ต่อได้จบชีวิตลง
+      </p>
+
+      <h3 data-en="🧾 Storyboard" data-th="🧾 สตอรี่บอร์ด">🧾 สตอรี่บอร์ด</h3>
+      <a href="https://www.canva.com/design/DAFXj-K_xU8/6_TAFuXJe9v7bUVoFPGMhw/view" target="_blank">
+        https://www.canva.com/design/DAFXj-K_xU8/6_TAFuXJe9v7bUVoFPGMhw/view
+      </a>
+
+      <h3 data-en="📺 Final Video" data-th="📺 คลิปวิดีโอสุดท้าย">📺 คลิปวิดีโอสุดท้าย</h3>
+      <a href="https://m.youtube.com/watch?v=U3Y_jVWRBhY&feature=youtu.be" target="_blank">
+        https://m.youtube.com/watch?v=U3Y_jVWRBhY
+      </a>
+    </section>
+
+    <a href="../index.html#projects" class="btn-back" data-en="← Back to Main Page" data-th="← กลับไปหน้าหลัก">← กลับไปหน้าหลัก</a>
+  </main>
+
+  <footer data-en="© 2025 Natdanai Sawatdee | Portfolio Website" data-th="© 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ">
+    &copy; 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ
+  </footer>
+
+  <script>
+    const langSwitcher = document.getElementById('lang-switcher');
+    let currentLang = localStorage.getItem('portfolioLang') || 'th';
+
+    function switchLanguage(lang) {
+      const title = document.querySelector('title');
+      if (title && title.hasAttribute('data-en') && title.hasAttribute('data-th')) {
+        title.textContent = (lang === 'en') ? title.getAttribute('data-en') : title.getAttribute('data-th');
+      }
+      const elementsToSwitch = document.querySelectorAll('[data-en][data-th]');
+      elementsToSwitch.forEach(el => {
+        el.textContent = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-th');
+      });
+      langSwitcher.textContent = (lang === 'en') ? 'TH' : 'EN';
+      currentLang = lang;
+      localStorage.setItem('portfolioLang', lang);
+    }
+
+    switchLanguage(currentLang);
+
+    langSwitcher.addEventListener('click', () => {
+      switchLanguage(currentLang === 'th' ? 'en' : 'th');
+    });
+  </script>
+</body>
+</html>

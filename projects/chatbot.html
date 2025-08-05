@@ -1,182 +1,267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Natdanai | IT Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <title data-en="Chatbot Project | Natdanai" data-th="โปรเจกต์แชตบอต | ณัฐดนัย">โปรเจกต์แชตบอต | ณัฐดนัย</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --color-bg: #f9f9f9;
+      --color-primary: #2c3e50;
+      --color-primary-light: #3498db;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-accent: #e67e22;
+      --color-white: #ffffff;
     }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #fff;
-      color: #1a1a1a;
+      background-color: var(--color-bg);
+      color: var(--color-text);
       line-height: 1.6;
     }
+
     nav {
-      background-color: #000;
-      color: #fff;
-      padding: 1rem;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 1rem 2rem;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
+      align-items: center;
     }
+
     nav a {
-      color: #fff;
+      color: var(--color-white);
       text-decoration: none;
       font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
     }
-    nav a:hover {
-      text-decoration: underline;
+
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+      text-decoration: none;
+      outline: none;
     }
-    header {
-      background-color: #000;
-      color: #fff;
-      padding: 4rem 1rem 3rem;
-      text-align: center;
+
+    #lang-switcher {
+      margin-left: auto;
+      background: var(--color-primary-light);
+      border: none;
+      color: var(--color-white);
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      z-index: 1100;
     }
-    header h1 {
-      font-size: 2.5rem;
-      margin: 1rem 0 0.5rem;
+
+    #lang-switcher:hover {
+      background: var(--color-accent);
     }
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.8;
-    }
-    header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-    }
+
     main {
       padding: 2rem 1rem;
       max-width: 900px;
       margin: auto;
     }
-    section {
-      margin-bottom: 3rem;
-    }
+
     h2 {
       font-size: 1.8rem;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
     }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: #f9f9f9;
+
+    .project-section {
+      background: var(--color-white);
       border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .project-image-placeholder {
+      margin: 2rem 0;
+      border: 2px dashed #ccc;
       border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: transform 0.2s ease;
-    }
-    .card:hover {
-      transform: scale(1.02);
-    }
-    .icon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 1.5rem;
+      padding: 2rem;
       text-align: center;
     }
-    .icon-grid img {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 0.5rem;
+
+    .project-details h3 {
+      margin-top: 2rem;
+      color: var(--color-primary);
     }
-    footer {
-      background-color: #000;
-      color: #fff;
+
+    .project-details ul {
+      padding-left: 1.2rem;
+    }
+
+    .btn-back {
+      display: block;
+      width: fit-content;
+      margin: 3rem auto 1rem;
+      background-color: var(--color-primary-light);
+      color: var(--color-white);
+      padding: 0.6rem 1.4rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
       text-align: center;
-      padding: 1rem;
+      text-decoration: none;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
-    a {
-      color: #007acc;
+
+    .btn-back:hover {
+      background-color: var(--color-accent);
+      transform: translateY(-2px);
       text-decoration: none;
     }
+
+    footer {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 500;
+      margin-top: 3rem;
+    }
+
+    a {
+      color: var(--color-primary-light);
+      text-decoration: none;
+    }
+
     a:hover {
       text-decoration: underline;
     }
+
     @media (max-width: 600px) {
       body { font-size: 15px; }
-      header h1 { font-size: 2rem; }
       nav {
-        flex-direction: column;
-        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      #lang-switcher {
+        position: sticky;
+        top: 10px;
+        margin-left: auto;
+        margin-top: 0.5rem;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#intro">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="../index.html#intro" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a>
+    <a href="../index.html#projects" data-en="Projects" data-th="โปรเจกต์">โปรเจกต์</a>
+    <a href="../index.html#skills" data-en="Skills" data-th="ทักษะ">ทักษะ</a>
+    <a href="../index.html#certificates" data-en="Certificates" data-th="ใบรับรอง">ใบรับรอง</a>
+    <a href="../index.html#contact" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a>
+    <button id="lang-switcher" aria-label="Switch Language">EN</button>
   </nav>
 
-  <header id="intro">
-    <img src="https://via.placeholder.com/120" alt="Profile Picture" />
-    <h1>Natdanai Sawatdee</h1>
-    <p>New Graduate in IT | สนใจงาน IT Support, Web Development และ Cybersecurity</p>
-  </header>
-
   <main>
-    <section id="projects">
-      <h2>Projects / โปรเจกต์</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3><a href="projects/chatbot.html">Chatbot Q&A</a></h3>
-          <p>แชทบอทตอบคำถามเกี่ยวกับสาขา IT พัฒนาโดยใช้ React + Gemini API</p>
-        </div>
-        <div class="card">
-          <h3><a href="projects/arduino-alert.html">Arduino Alert System</a></h3>
-          <p>ระบบเตือนภัยด้วยเซ็นเซอร์บน Arduino แสดงผลผ่าน Serial Monitor</p>
-        </div>
-        <div class="card">
-          <h3><a href="projects/portfolio.html">Mini Portfolio Website</a></h3>
-          <p>เว็บไซต์ส่วนตัวสร้างด้วย HTML/CSS แสดงทักษะและผลงาน</p>
-        </div>
+    <section id="project-chatbot" class="project-section">
+      <h2 data-en="BUU Chatbot-IT, developed for the Bachelor of Science Program in Information Technology for Digital Industry at Burapha University" data-th="BUU Chatbot-IT สำหรับหลักสูตรเทคโนโลยีสารสนเทศเพื่ออุตสาหกรรมดิจิทัล มหาวิทยาลัยบูรพา">
+       BUU Chatbot-IT สำหรับหลักสูตรเทคโนโลยีสารสนเทศเพื่ออุตสาหกรรมดิจิทัล มหาวิทยาลัยบูรพา
+      </h2>
+
+      <p data-en="This chatbot system is designed to answer questions related to the Information Technology for Digital Industry program at Burapha University. It is integrated with Google's Gemini AI through an API and developed using React.js."
+         data-th="ระบบแชตบอตที่สามารถตอบคำถามเกี่ยวกับหลักสูตรสาขาเทคโนโลยีสารสนเทศเพื่ออุตสาหกรรมดิจิทัล มหาวิทยาลัยบูรพา โดยเชื่อมต่อกับ AI ของ Google Gemini ผ่าน API และพัฒนาเว็บด้วย React.js">
+        ระบบแชตบอตที่สามารถตอบคำถามเกี่ยวกับหลักสูตรสาขาเทคโนโลยีสารสนเทศเพื่ออุตสาหกรรมดิจิทัล 
+        โดยเชื่อมต่อกับ AI ของ Google Gemini ผ่าน API และพัฒนาเว็บด้วย React.js
+      </p>
+
+<img 
+  src="../images/chatbot.png" 
+  alt="Chatbot UI" 
+  data-en="Chatbot UI Screenshot" 
+  data-th="ภาพหน้าจอของแชตบอต"
+  style="display: block; margin: 2rem auto; max-width: 100%; height: auto; max-height: 500px; border: 1px solid #ccc; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" 
+/>
+
+
+
+      <div class="project-details">
+        <h3 data-en="🔧 Tech Stack" data-th="🔧 เทคโนโลยีที่ใช้ ">🔧 เทคโนโลยีที่ใช้ (Tech Stack)</h3>
+        <ul>
+          <li>React.js (Frontend)</li>
+          <li>Google Gemini API (AI integration)</li>
+          <li>HTML / CSS</li>
+          <li>JavaScript</li>
+        </ul>
+
+        <h3 data-en="✨ Key Features" data-th="✨ ฟีเจอร์เด่น">✨ ฟีเจอร์เด่น (Key Features)</h3>
+        <ul>
+          <li data-en="Auto-answer questions about IT curriculum and subjects" data-th="ตอบคำถามเกี่ยวกับหลักสูตรและรายวิชาแบบอัตโนมัติ">ตอบคำถามเกี่ยวกับหลักสูตรและรายวิชาแบบอัตโนมัติ</li>
+          <li data-en="Simple UI design, mobile responsive" data-th="ออกแบบ UI เรียบง่าย รองรับการใช้งานบนมือถือ">ออกแบบ UI เรียบง่าย รองรับการใช้งานบนมือถือ</li>
+          <li data-en="Uses real API from Google AI for context-aware replies" data-th="ใช้ API จริงจาก Google AI เพื่อเรียนรู้และตอบแบบมีบริบท">ใช้ API จริงจาก Google AI เพื่อเรียนรู้และตอบแบบมีบริบท</li>
+        </ul>
+
+        <h3 data-en="🎯 Project Goal" data-th="🎯 เป้าหมายของโปรเจกต์">🎯 เป้าหมายของโปรเจกต์</h3>
+        <p data-en="Provide 24/7 automatic assistant for new students or interested people in IT program, reducing staff workload." 
+           data-th="สร้างระบบผู้ช่วยอัตโนมัติสำหรับนักศึกษาใหม่หรือผู้ที่สนใจสาขา IT โดยไม่ต้องรอสอบถามเจ้าหน้าที่ ลดภาระงาน และให้บริการได้ตลอด 24 ชม.">
+          สร้างระบบผู้ช่วยอัตโนมัติสำหรับนักศึกษาใหม่หรือผู้ที่สนใจสาขา IT  
+          โดยไม่ต้องรอสอบถามเจ้าหน้าที่ ลดภาระงาน และให้บริการได้ตลอด 24 ชม.
+        </p>
+
+        <h3 data-en="🔗 Project Links" data-th="🔗 ลิงก์โปรเจกต์">🔗 ลิงก์โปรเจกต์</h3>
+        <ul>
+          <li><a href="https://github.com/natdanaisawatdeework-lang/chatbot-it" target="_blank">GitHub Repository</a></li>
+        </ul>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills / ทักษะ</h2>
-      <div class="icon-grid">
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"/><div>HTML</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"/><div>CSS</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"/><div>JavaScript</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"/><div>React</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"/><div>Python</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/><div>Java</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/><div>MySQL</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"/><div>Git</div></div>
-        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"/><div>Docker</div></div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact / ติดต่อ</h2>
-      <p>Email: natdanai@example.com</p>
-      <p>Phone: 08x-xxx-xxxx</p>
-      <p>GitHub: <a href="https://github.com/natdanai" target="_blank">github.com/natdanai</a></p>
-    </section>
+    <!-- ปุ่มกลับหน้าหลัก -->
+    <a href="../index.html#projects" class="btn-back" 
+       data-en="← Back to Main Page" 
+       data-th="← กลับไปหน้าหลัก">← กลับไปหน้าหลัก</a>
   </main>
 
-  <footer>
-    &copy; 2025 Natdanai Sawatdee | Portfolio Website
+  <footer data-en="© 2025 Natdanai Sawatdee | Portfolio Website"
+          data-th="© 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ">
+    &copy; 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ
   </footer>
+
+  <script>
+    const langSwitcher = document.getElementById('lang-switcher');
+    let currentLang = localStorage.getItem('portfolioLang') || 'th';
+
+    function switchLanguage(lang) {
+      const title = document.querySelector('title');
+      if (title && title.hasAttribute('data-en') && title.hasAttribute('data-th')) {
+        title.textContent = (lang === 'en') ? title.getAttribute('data-en') : title.getAttribute('data-th');
+      }
+      const elementsToSwitch = document.querySelectorAll('[data-en][data-th]');
+      elementsToSwitch.forEach(el => {
+        el.textContent = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-th');
+      });
+      langSwitcher.textContent = (lang === 'en') ? 'TH' : 'EN';
+      currentLang = lang;
+      localStorage.setItem('portfolioLang', lang);
+    }
+
+    switchLanguage(currentLang);
+
+    langSwitcher.addEventListener('click', () => {
+      switchLanguage(currentLang === 'th' ? 'en' : 'th');
+    });
+  </script>
 </body>
 </html>

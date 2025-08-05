@@ -1,19 +1,47 @@
-body {
-    font-family: sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 20px;
-    background: #f4f4f4;
-  }
-  header {
-    background: #222;
-    color: white;
-    padding: 20px;
-  }
-  section {
-    margin-top: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-  }
-  
+nav a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  text-decoration: none;
+  outline: none;
+}
+
+/* ปุ่มกลับหน้าหลัก */
+.btn-back {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.6rem 1rem;
+  background-color: var(--color-primary-light);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.project-image {
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

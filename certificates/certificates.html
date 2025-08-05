@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-en="Certificates | Natdanai" data-th="ใบรับรอง | ณัฐดนัย">ใบรับรอง | ณัฐดนัย</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-bg: #f9f9f9;
+      --color-primary: #2c3e50;
+      --color-primary-light: #3498db;
+      --color-text: #333333;
+      --color-text-light: #666666;
+      --color-accent: #e67e22;
+      --color-white: #ffffff;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    nav {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      align-items: center;
+    }
+    nav a {
+      color: var(--color-white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+    }
+    nav a:hover,
+    nav a:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+      text-decoration: none;
+      outline: none;
+    }
+    #lang-switcher {
+      margin-left: auto;
+      background: var(--color-primary-light);
+      border: none;
+      color: var(--color-white);
+      font-weight: 600;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease;
+      z-index: 1100;
+    }
+    #lang-switcher:hover {
+      background: var(--color-accent);
+    }
+    main {
+      padding: 2rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      border: 2px solid #ccc;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: #f5f5f5;
+    }
+    .featured-card, .card {
+      background: var(--color-white);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .featured-card:hover, .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      background-color: #f0f8ff;
+    }
+    .featured-card img, .card img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card p, .featured-card p {
+      font-weight: 600;
+    }
+
+    /* ปุ่มกลับหน้าหลัก */
+    .btn-back {
+      display: block;
+      width: fit-content;
+      margin: 3rem auto 1rem;
+      background-color: var(--color-primary-light);
+      color: var(--color-white);
+      padding: 0.6rem 1.4rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn-back:hover {
+      background-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      text-align: center;
+      padding: 1rem;
+      font-weight: 500;
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html#intro" data-en="About" data-th="เกี่ยวกับ">เกี่ยวกับ</a>
+    <a href="../index.html#projects" data-en="Projects" data-th="โปรเจกต์">โปรเจกต์</a>
+    <a href="../index.html#skills" data-en="Skills" data-th="ทักษะ">ทักษะ</a>
+    <a href="../index.html#certificates" data-en="Certificates" data-th="ใบรับรอง">ใบรับรอง</a>
+    <a href="../index.html#contact" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a>
+    <button id="lang-switcher" aria-label="Switch Language">EN</button>
+  </nav>
+
+  <main>
+    <h1 data-en="Certificates" data-th="ใบรับรอง">ใบรับรอง</h1>
+
+    <div class="featured-card" onclick="window.open('pdf/Google Cybersecurity.pdf', '_blank')">
+      <img src="images/Google Cybersecurity.png" alt="Google Cybersecurity" />
+      <p>Google Cybersecurity</p>
+    </div>
+
+ 
+    <div class="card-grid">
+      <div class="card">
+        <a href="pdf/Foundations%20of%20Cybersecu%20rity.pdf" target="_blank">
+          <img src="images/Foundations%20of%20Cybersecu%20rity.png" alt="Foundations of Cybersecurity" />
+          <p>Foundations of Cybersecurity</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Assets,%20Threats,%20and%20Vu%20lnerabilities.pdf" target="_blank">
+          <img src="images/Assets,%20Threats,%20and%20Vu%20lnerabilities.png" alt="Assets, Threats, and Vulnerabilities" />
+          <p>Assets, Threats, and Vulnerabilities</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Play%20It%20Safe%20Manage%20Secu%20rity%20Risks.pdf" target="_blank">
+          <img src="images/Play%20It%20Safe%20Manage%20Secu%20rity%20Risks.png" alt="Play It Safe" />
+          <p>Play It Safe: Manage Security Risks</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Sound%20the%20Alarm%20Detection%20and%20Response.pdf" target="_blank">
+          <img src="images/Sound%20the%20Alarm%20Detection%20and%20Response.png" alt="Sound the Alarm" />
+          <p>Sound the Alarm: Detection and Response</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Automate%20Cybersecu%20rity%20Tasks%20with%20Python.pdf" target="_blank">
+          <img src="images/Automate%20Cybersecu%20rity%20Tasks%20with%20Python.png" alt="Automate Cybersecurity" />
+          <p>Automate Cybersecurity Tasks with Python</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Connect%20and%20Protec%20Networks%20and%20Network.pdf" target="_blank">
+          <img src="images/Connect%20and%20Protec%20Networks%20and%20Network.png" alt="Connect and Protect Networks" />
+          <p>Connect and Protect Networks</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Put%20It%20to%20Work%20Prepare%20for%20Cybersecu%20rity%20Jobs.pdf" target="_blank">
+          <img src="images/Put%20It%20to%20Work%20Prepare%20for%20Cybersecu%20rity%20Jobs.png" alt="Put It to Work" />
+          <p>Put It to Work: Prepare for Cybersecurity Jobs</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="pdf/Tools%20of%20the%20Trade%20Linu%20x%20and%20SQL.pdf" target="_blank">
+          <img src="images/Tools%20of%20the%20Trade%20Linu%20x%20and%20SQL.png" alt="Tools of the Trade" />
+          <p>Tools of the Trade: Linux and SQL</p>
+        </a>
+      </div>
+    </div>
+
+
+    <a href="../index.html#certificates" class="btn-back" 
+       data-en="← Back to Main Page" 
+       data-th="← กลับไปหน้าหลัก">← กลับไปหน้าหลัก</a>
+  </main>
+
+  <footer data-en="© 2025 Natdanai Sawatdee | Portfolio Website"
+          data-th="© 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ">
+    &copy; 2025 ณัฐดนัย สวัสดี | เว็บไซต์พอร์ตโฟลิโอ
+  </footer>
+
+  <script>
+    // สลับภาษาไทย-อังกฤษ โดยใช้ data-en, data-th attribute
+    const langSwitcher = document.getElementById('lang-switcher');
+    let currentLang = localStorage.getItem('portfolioLang') || 'th';
+
+    function switchLanguage(lang) {
+      const title = document.querySelector('title');
+      if (title && title.hasAttribute('data-en') && title.hasAttribute('data-th')) {
+        title.textContent = (lang === 'en') ? title.getAttribute('data-en') : title.getAttribute('data-th');
+      }
+      const elementsToSwitch = document.querySelectorAll('[data-en][data-th]');
+      elementsToSwitch.forEach(el => {
+        el.textContent = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-th');
+      });
+      langSwitcher.textContent = (lang === 'en') ? 'TH' : 'EN';
+      currentLang = lang;
+      localStorage.setItem('portfolioLang', lang);
+    }
+
+    switchLanguage(currentLang);
+
+    langSwitcher.addEventListener('click', () => {
+      switchLanguage(currentLang === 'th' ? 'en' : 'th');
+    });
+  </script>
+</body>
+</html>
