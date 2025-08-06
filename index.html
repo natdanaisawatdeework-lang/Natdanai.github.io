@@ -260,7 +260,7 @@ and ensuring smooth IT operations with care and integrity."
             ระบบเตือนภัยด้วยเซ็นเซอร์บน Arduino แสดงผลผ่าน Serial Monitor
           </p>
         </div>
-        <div class="card" onclick="window.location.href='projects/portfolio.html'">
+      <div class="card" onclick="window.location.href='projects/multimedia.html'">
   <h3 data-en="Multimedia Production" data-th="Multimedia Production" style="font-weight: bold;">Multimedia Production</h3>          
   <p data-en="This short film tells the story of the main character who steals a teammate’s work and claims it as their own in order to complete the project successfully."
              data-th="หนังสั้นเรื่องนี้เล่าเรื่องราวของตัวละครหลักที่ขโมยงานเพื่อนในกลุ่มมาเป็นของตัวเอง เพื่อให้งานสำเร็จ">
@@ -429,6 +429,12 @@ and ensuring smooth IT operations with care and integrity."
         }
       });
     });
+    // ป้องกันการ scroll ลงมาเมื่อรีเฟรช ถ้ามี hash fragment
+if (window.location.hash) {
+  window.scrollTo(0, 0);
+  history.replaceState(null, null, ' ');
+}
+
   </script>
 </body>
 </html>
