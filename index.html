@@ -376,11 +376,11 @@ and ensuring smooth IT operations with care and integrity."
     <img src="images/profile.jpg" alt="รูปขยายใหญ่ ณัฐดนัย สวัสดี" style="max-width:90vw; max-height:90vh; border-radius:10px; box-shadow:0 0 20px rgba(255,255,255,0.3);" />
   </div>
 
-  <script>
-    // Modal รูปโปรไฟล์
-    const profilePic = document.getElementById('profile-pic');
-    const modal = document.getElementById('modal');
-
+ <script>
+  // --- Modal รูปโปรไฟล์ ---
+  const profilePic = document.getElementById('profile-pic');
+  const modal = document.getElementById('modal');
+  if (profilePic && modal) {
     profilePic.addEventListener('click', () => {
       modal.style.display = 'flex';
       modal.focus();
@@ -388,54 +388,91 @@ and ensuring smooth IT operations with care and integrity."
     modal.addEventListener('click', () => {
       modal.style.display = 'none';
     });
+  }
 
-    // ฟังก์ชันสลับภาษา ไทย <-> อังกฤษ พร้อม localStorage
-    const langSwitcher = document.getElementById('lang-switcher');
-    let currentLang = localStorage.getItem('portfolioLang') || 'th';
+  // --- Language switcher (ไทย <-> อังกฤษ) ---
+  const langSwitcher = document.getElementById('lang-switcher');
+  let currentLang = localStorage.getItem('portfolioLang') || 'th';
 
-    function switchLanguage(lang) {
-      const elementsToSwitch = document.querySelectorAll('[data-en][data-th]');
-      elementsToSwitch.forEach(el => {
-        el.textContent = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-th');
-      });
-      langSwitcher.textContent = (lang === 'en') ? 'TH' : 'EN';
-      currentLang = lang;
-      localStorage.setItem('portfolioLang', lang);
-    }
+  function switchLanguage(lang) {
+    const elementsToSwitch = document.querySelectorAll('[data-en][data-th]');
+    elementsToSwitch.forEach(el => {
+      el.textContent = (lang === 'en') ? el.getAttribute('data-en') : el.getAttribute('data-th');
+    });
+    if (langSwitcher) langSwitcher.textContent = (lang === 'en') ? 'TH' : 'EN';
+    currentLang = lang;
+    localStorage.setItem('portfolioLang', lang);
+  }
 
-    // โหลดภาษาที่เลือกไว้ตอนเปิดหน้า
-    switchLanguage(currentLang);
-
+  // โหลดภาษาที่เลือกไว้ตอนเปิดหน้า
+  switchLanguage(currentLang);
+  if (langSwitcher) {
     langSwitcher.addEventListener('click', () => {
-      if (currentLang === 'th') {
-        switchLanguage('en');
-      } else {
-        switchLanguage('th');
+      switchLanguage(currentLang === 'th' ? 'en' : 'th');
+    });
+  }
+
+  // --- ฟังก์ชันเลื่อนแบบชดเชย navbar ---
+  function scrollToElementWithOffset(elem, offset = 80, smooth = true) {
+    if (!elem) return;
+    const y = elem.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: smooth ? 'smooth' : 'auto' });
+  }
+
+  // กรณีคลิกลิงก์ภายในหน้า (เช่น nav)
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElem = document.getElementById(targetId);
+      if (targetElem) {
+        const offset = 80; // ปรับตามความสูง navbar
+        scrollToElementWithOffset(targetElem, offset, true);
+        // ตั้ง hash โดยไม่ให้ browser กระโดด (history.pushState)
+        history.pushState(null, '', '#' + encodeURIComponent(targetId));
       }
     });
+  });
 
-    // ปรับการเลื่อนหน้าเวลา click ลิงก์ใน nav เพื่อไม่ให้ navbar บังเนื้อหา
-    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault(); // ป้องกันเด้งปกติ
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElem = document.getElementById(targetId);
-        if (targetElem) {
-          const offset = 80; // ปรับตามความสูง navbar ของคุณ
-          const elementPosition = targetElem.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({
-            top: elementPosition - offset,
-            behavior: 'smooth'
-          });
+  // เมื่อ URL มี hash ตอนโหลดหน้า (เช่น เข้ามาจากหน้าอื่นด้วย index.html#contact)
+  // เราจะยับยั้งการกระโดดของ browser โดยเลื่อนไปที่ top ก่อน แล้วค่อยเลื่อนแบบชดเชย
+  window.addEventListener('DOMContentLoaded', () => {
+    if (location.hash) {
+      // เก็บ hash ไว้ก่อน (เช่น "#contact")
+      const id = decodeURIComponent(location.hash.slice(1));
+      // บนบางเบราเซอร์ browser จะกระโดดไปก่อน DOMContentLoaded -> ให้รีเซ็ตตำแหน่งก่อน
+      // เลื่อนชั่วคราวขึ้นไป top แล้วหลังจาก layout เสร็จค่อยเลื่อนแบบชดเชย
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        const target = document.getElementById(id);
+        if (target) {
+          const offset = 80;
+          scrollToElementWithOffset(target, offset, true);
         }
-      });
-    });
-    // ป้องกันการ scroll ลงมาเมื่อรีเฟรช ถ้ามี hash fragment
-if (window.location.hash) {
-  window.scrollTo(0, 0);
-  history.replaceState(null, null, ' ');
-}
+      }, 50); // 50ms พอให้ layout เซ็ตตัว
+    }
+  });
 
-  </script>
+  // ถ้า hash เปลี่ยนภายหลัง (เช่น pushState/popup หรือผู้ใช้เปลี่ยน) - เลื่อนชดเชย
+  window.addEventListener('hashchange', () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const target = document.getElementById(id);
+    if (target) {
+      const offset = 80;
+      scrollToElementWithOffset(target, offset, true);
+    }
+  });
+
+  // ป้องกันพฤติกรรมเลื่อนที่ไม่คาดคิด: ถ้าต้องการให้หน้าใหม่ (ไม่มี hash) อยู่บนสุดเสมอ,
+  // ตรวจสอบว่ามี scrollY เมื่อโหลดแล้ว ถ้าใช่ ให้เลื่อนไปบนสุด (ไม่จำเป็นในทุกกรณี)
+  // (บล็อกนี้ค่อนข้างปลอดภัย แต่ถ้าไม่ต้องการให้ใช้ให้ลบออก)
+  window.addEventListener('load', () => {
+    if (!location.hash) {
+      // บางครั้ง browser อาจจำตำแหน่ง scroll เก่าจาก session history — ปัดเป็น top
+      window.scrollTo(0, 0);
+    }
+  });
+</script>
+
 </body>
 </html>
