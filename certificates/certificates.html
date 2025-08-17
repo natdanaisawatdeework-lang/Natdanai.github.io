@@ -235,6 +235,45 @@
   </footer>
 
   <script>
+      // ตั้ง history ให้ manual (ป้องกันบาง browser กระโดดโดยอัตโนมัติ)
+  if ('scrollRestoration' in history) {
+    try { history.scrollRestoration = 'manual'; }
+    catch (e) { /* ignore */ }
+  }
+
+  // ตรวจสอบชนิดการนำทาง: รีเฟรช / back-forward / navigate ฯลฯ
+  // ใช้ PerformanceNavigationTiming ถ้ามี (ทันสมัยกว่า)
+  (function () {
+    let navType = null;
+    try {
+      const entries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+      if (entries && entries.length) {
+        navType = entries[0].type; // 'navigate' | 'reload' | 'back_forward' | 'prerender'
+      } else if (performance.navigation) {
+        // fallback เก่า
+        const t = performance.navigation.type;
+        if (t === 1) navType = 'reload';
+        else if (t === 2) navType = 'back_forward';
+        else navType = 'navigate';
+      }
+    } catch (e) { navType = null; }
+
+    // ถ้าเป็น reload หรือ back_forward ให้เอา fragment ออกทันที (ก่อน browser จะ jump)
+    if (location.hash && (navType === 'reload' || navType === 'back_forward')) {
+      // ลบ fragment ออกจาก URL ทันทีโดยไม่ reload หน้า
+      // (ทำให้ browser ไม่มีเหตุผลจะเลื่อนไปตำแหน่ง hash)
+      try {
+        history.replaceState(null, '', location.pathname + location.search);
+        // ปกติ browser อาจยังกระโดดก่อน script โอกาสน้อยถ้า script อยู่ใน head
+        // ให้พยายามเลื่อนไป top อีกครั้งเพื่อความแน่ใจ
+        window.scrollTo(0, 0);
+        // small debug (ลบได้)
+        console.debug('[scroll-fix] removed hash on reload/back_forward (navType):', navType);
+      } catch (e) {
+        // ignore
+      }
+    }
+  })();
     // สลับภาษาไทย-อังกฤษ โดยใช้ data-en, data-th attribute
     const langSwitcher = document.getElementById('lang-switcher');
     let currentLang = localStorage.getItem('portfolioLang') || 'th';
