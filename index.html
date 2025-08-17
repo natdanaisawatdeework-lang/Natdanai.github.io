@@ -472,6 +472,12 @@ and ensuring smooth IT operations with care and integrity."
       window.scrollTo(0, 0);
     }
   });
+
+      document.querySelectorAll('nav a').forEach(a => {
+      a.addEventListener('mousedown', () => a.blur());
+      a.addEventListener('touchstart', () => a.blur(), { passive: true });
+      a.addEventListener('click', () => a.blur());
+    });
 </script>
 
 </body>
